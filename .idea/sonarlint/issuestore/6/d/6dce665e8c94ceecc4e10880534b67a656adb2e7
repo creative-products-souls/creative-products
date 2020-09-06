@@ -1,0 +1,12 @@
+
+A
+java:S1168."+Return an empty collection instead of null.(•πÔç
+<	java:S131""Add a default case to this switch.(Ä¯¢É¸ˇˇˇˇ
+[	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(π≤¬ú
+c
+java:S1871"HThis case's code block is the same as the block for the case on line 26.(È”Ÿ·˘ˇˇˇˇ
+c
+java:S1871 "HThis case's code block is the same as the block for the case on line 26.(◊”Ëº˚ˇˇˇˇ
+Z	java:S112*"FDefine and throw a dedicated exception instead of using a generic one.(ñ™¶`
+A
+java:S1168&"+Return an empty collection instead of null.(•πÔç
