@@ -1,20 +1,23 @@
 package com.creative.solutions.core.controller;
 
-import com.creative.solutions.core.beans.ApplicationEntity;
-import com.creative.solutions.core.service.ApplicationService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.creative.solutions.core.beans.ApplicationEntity;
+import com.creative.solutions.core.dto.ApplicationDto;
+import com.creative.solutions.core.dto.ApplicationResponseDto;
+import com.creative.solutions.core.service.ApplicationService;
 
 @CrossOrigin(origins = {"http://localhost:8762", "http://localhost:8763", "http://localhost:9001"})
 @RestController
+@RequestMapping("/application")
 public class ApplicationController {
 
-    //@Autowired
+    @Autowired
     ApplicationService applicationService;
 
     //Create, Update Application
@@ -26,18 +29,35 @@ public class ApplicationController {
         return null; //userRepository.findAll();
     }*/
 
-    @PostMapping("/createApplication")
-    public List<ApplicationEntity> createApplication() throws Exception{
+    @PutMapping("/createApplication")
+    public ResponseEntity<ApplicationResponseDto> createApplication(@RequestBody ApplicationDto applicationDto) throws Exception{
         //input variable application dto + method level entitlements
         //return application dto
-        return null;
+        ApplicationResponseDto responseDto = new ApplicationResponseDto();
+        try{
+            responseDto.getApplicationDtoList().add(applicationService.createapplication(applicationDto));
+            responseDto.setGenericMessage("Application has been created successfully");
+        }catch(Exception e) {
+            e.printStackTrace();
+            responseDto.setGenericMessage("Failed to create the application");
+            responseDto.setErrorMessage(e.getMessage());
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
     }
 
     @PostMapping("/getApplicationList")
-    public List<ApplicationEntity> getApplicationList() throws Exception{
-        //input variable user id and application id (non-mandatory) + method level entitlements
-        //return list of application dto
-        return null;
+    public ResponseEntity<ApplicationResponseDto> getApplicationList(@RequestBody ApplicationDto applicationDto) throws Exception{
+
+        ApplicationResponseDto responseDto = new ApplicationResponseDto();
+        try {
+            responseDto.getApplicationList().addAll(applicationService.getapplicationList(applicationDto));
+            responseDto.setGenericMessage("Application list retrieved successfully");
+        }catch(Exception e){
+            e.printStackTrace();
+            responseDto.setGenericMessage("Failed to retrieve the application list");
+            responseDto.setErrorMessage(e.getMessage());
+        }
+        return ResponseEntity.ok(responseDto);
     }
 
     @PostMapping("/deleteApplication")

@@ -125,7 +125,7 @@
 		<!--Swagger Dependencies - End-->
 		<dependency>
 			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct</artifactId>
+			<artifactId>mapstruct-jdk8</artifactId>
 			<version>${org.mapstruct.version}</version>
 		</dependency>
 	</dependencies>

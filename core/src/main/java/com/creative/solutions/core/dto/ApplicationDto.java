@@ -11,4 +11,5 @@ public class ApplicationDto extends BaseProductAtrributeDto implements Serializa
     private String appName;
     private String appType;
     private boolean isActive;
+    private String userName;
 }

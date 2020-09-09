@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name = "prod_fragnance", schema = "public", catalog = "postgres")
+@Table(name = "prod_fragnance", schema = "public")
 public class ProdFragnanceEntity extends AuditEntity implements Serializable {
 
     @Id
