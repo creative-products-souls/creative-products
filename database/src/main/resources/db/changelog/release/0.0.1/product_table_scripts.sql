@@ -304,3 +304,28 @@ create table Product_Details
 	UpdatedBy	Varchar(50),
 	UpdatedOn	date
 );
+
+DO
+$do$
+Begin
+
+	If EXISTS (select count(*)  from pg_tables where tablename = upper('featured_items')) Then
+		drop table featured_items;
+	end if;
+
+end;
+$do$
+;
+
+create table featured_items
+(
+	feature_id	        bigserial,
+	feature_name Varchar(50),
+	app_id	    bigint,
+	product_id	bigint,
+	is_active	boolean,
+	CreatedBy	Varchar(50),
+	CreatedOn	date,
+	UpdatedBy	Varchar(50),
+	UpdatedOn	date
+);
