@@ -1,0 +1,14 @@
+drop table Application;
+drop table Product;
+drop table Prod_Weight;
+drop table Prod_Color;
+drop table Prod_Fragnance;
+drop table Prod_Size;
+drop table Prod_Image;
+drop table Prod_Packaging;
+drop table Prod_Ingradient;
+drop table Prod_Purity;
+drop table Prod_Gender;
+drop table Prod_Desc;
+drop table Product_Details;
+drop table featured_items;

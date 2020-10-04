@@ -5,6 +5,15 @@
         xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="vish" id="1" dbms="PostgreSQL">
+        <sqlFile encoding="utf8" path="product_table_scripts.sql" relativeToChangelogFile="true"/>
+        <rollback changeSetPath="product_table_rollback_scripts.sql"/>
+    </changeSet>
+    <!--<changeSet author="vish" id="2">
+        <sqlFile encoding="utf8" path="metadata_prod.sql" relativeToChangelogFile="true"/>
+    </changeSet>-->
 
-    <include file="db\changelog\release\0.0.1\changelog-0.0.1.xml"/>
+    <changeSet author="vish" id="tag-1.0">
+        <tagDatabase tag="1.0"/>
+    </changeSet>
 </databaseChangeLog>

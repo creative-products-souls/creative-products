@@ -1,16 +1,3 @@
-DO
-$do$
-Begin
-	
-	If EXISTS (select count(*)  from pg_tables where tablename = upper('Application')) Then
-		drop table Application;
-	else
-		null;
-	end if;
-	
-end;
-$do$
-;
 create table Application
 (
 	App_id	    BIGSERIAL,
@@ -22,18 +9,6 @@ create table Application
 	UpdatedBy	Varchar(50),
 	UpdatedOn	date
 );
-
-DO
-$do$
-Begin
-	
-	If EXISTS (select count(*)  from pg_tables where tablename = upper('Product')) Then
-		drop table Product;
-	end if;
-	
-end;
-$do$
-;
 
 create table Product
 (
@@ -49,18 +24,6 @@ create table Product
 	UpdatedOn	date
 );
 
-DO
-$do$
-Begin
-	
-	If EXISTS (select count(*)  from pg_tables where tablename = upper('Prod_Weight')) Then
-		drop table Prod_Weight;
-	end if;
-	
-end;
-$do$
-;
-
 create table Prod_Weight
 (
 	Weight_id	BIGSERIAL,
@@ -72,18 +35,6 @@ create table Prod_Weight
 	UpdatedOn	date
 );
 
-DO
-$do$
-Begin
-	
-	If EXISTS (select count(*)  from pg_tables where tablename = upper('Prod_Color')) Then
-		drop table Prod_Color;
-	end if;
-	
-end;
-$do$
-;
-
 create table Prod_Color
 (
 	Color_id	BIGSERIAL,
@@ -93,18 +44,6 @@ create table Prod_Color
 	UpdatedBy	Varchar(50),
 	UpdatedOn	date
 );
-
-DO
-$do$
-Begin
-	
-	If EXISTS (select count(*)  from pg_tables where tablename = upper('Prod_Fragnance')) Then
-		drop table Prod_Fragnance;
-	end if;
-	
-end;
-$do$
-;
 
 create table Prod_Fragnance
 (
@@ -116,18 +55,6 @@ create table Prod_Fragnance
 	UpdatedOn	date
 );
 
-DO
-$do$
-Begin
-	
-	If EXISTS (select count(*)  from pg_tables where tablename = upper('Prod_Size')) Then
-		drop table Prod_Size;
-	end if;
-	
-end;
-$do$
-;
-
 create table Prod_Size
 (
 	Size_id	        bigserial,
@@ -137,18 +64,6 @@ create table Prod_Size
 	UpdatedBy	Varchar(50),
 	UpdatedOn	date
 );
-
-DO
-$do$
-Begin
-	
-	If EXISTS (select count(*)  from pg_tables where tablename = upper('Prod_Image')) Then
-		drop table Prod_Image;
-	end if;
-	
-end;
-$do$
-;
 
 create table Prod_Image
 (
@@ -160,18 +75,6 @@ create table Prod_Image
 	UpdatedBy	Varchar(50),
 	UpdatedOn	date
 );
-
-DO
-$do$
-Begin
-	
-	If EXISTS (select count(*)  from pg_tables where tablename = upper('Prod_Packaging')) Then
-		drop table Prod_Packaging;
-	end if;
-	
-end;
-$do$
-;
 
 create table Prod_Packaging
 (
@@ -185,18 +88,6 @@ create table Prod_Packaging
 	UpdatedOn		date
 );
 
-DO
-$do$
-Begin
-	
-	If EXISTS (select count(*)  from pg_tables where tablename = upper('Prod_Ingradient')) Then
-		drop table Prod_Ingradient;
-	end if;
-	
-end;
-$do$
-;
-
 create table Prod_Ingradient
 (
 	Ingradient_id	bigserial,
@@ -208,18 +99,6 @@ create table Prod_Ingradient
 	UpdatedOn		date
 );
 
-DO
-$do$
-Begin
-	
-	If EXISTS (select count(*)  from pg_tables where tablename = upper('Prod_Purity')) Then
-		drop table Prod_Purity;
-	end if;
-	
-end;
-$do$
-;
-
 create table Prod_Purity
 (
 	Purity_id	bigserial,
@@ -229,18 +108,6 @@ create table Prod_Purity
 	UpdatedBy	Varchar(50),
 	UpdatedOn	date
 );
-
-DO
-$do$
-Begin
-	
-	If EXISTS (select count(*)  from pg_tables where tablename = upper('Prod_Gender')) Then
-		drop table Prod_Gender;
-	end if;
-	
-end;
-$do$
-;
 
 create table Prod_Gender
 (
@@ -253,18 +120,6 @@ create table Prod_Gender
 	UpdatedOn	date
 );
 
-DO
-$do$
-Begin
-	
-	If EXISTS (select count(*)  from pg_tables where tablename = upper('Prod_Desc')) Then
-		drop table Prod_Desc;
-	end if;
-	
-end;
-$do$
-;
-
 create table Prod_Desc
 (
 	Desc_id	        bigserial,
@@ -274,18 +129,6 @@ create table Prod_Desc
 	UpdatedBy	Varchar(50),
 	UpdatedOn	date
 );
-
-DO
-$do$
-Begin
-	
-	If EXISTS (select count(*)  from pg_tables where tablename = upper('Product_Details')) Then
-		drop table Product_Details;
-	end if;
-	
-end;
-$do$
-;
 
 create table Product_Details
 (
@@ -305,18 +148,6 @@ create table Product_Details
 	UpdatedBy	Varchar(50),
 	UpdatedOn	date
 );
-
-DO
-$do$
-Begin
-
-	If EXISTS (select count(*)  from pg_tables where tablename = upper('featured_items')) Then
-		drop table featured_items;
-	end if;
-
-end;
-$do$
-;
 
 create table featured_items
 (

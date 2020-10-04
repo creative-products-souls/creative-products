@@ -9,7 +9,7 @@
 
     <modules>
         <module>core</module>
-        <module>database</module>
+        <!--<module>database</module>-->
         <module>notifications</module>
         <module>ocean</module>
         <module>service-discovery</module>
