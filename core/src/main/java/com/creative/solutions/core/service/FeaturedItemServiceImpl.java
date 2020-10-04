@@ -31,17 +31,12 @@ public class FeaturedItemServiceImpl implements FeaturedItemService{
     @Override
     public List<ProductDto> createFeaturedList(FeaturedItemDto featuredItem) {
         List<ProductDto> prodDtoList = Lists.newArrayList();
-        try {
-            if(featuredItem != null && !CollectionUtils.isEmpty(featuredItem.getProductList())){
-                Validate.notEmpty(featuredItem.getFeatureListName());
-                List<FeaturedItemEntity> featuredItemEntities = featuredItemRepository.saveAll(featuredItemMapper.
-                        toFeaturedItemList(mapProdDtoToFeaturedItems(featuredItem.getProductList(), featuredItem.getFeatureListName())));
-                prodDtoList.addAll(mapFeaturedItemsToProdDtos(featuredItemMapper.toFeaturedItemDtos(featuredItemEntities)));
-            }
-        }catch (Exception e){
-            e.printStackTrace();
+        if(featuredItem != null && !CollectionUtils.isEmpty(featuredItem.getProductList())){
+            Validate.notEmpty(featuredItem.getFeatureListName());
+            List<FeaturedItemEntity> featuredItemEntities = featuredItemRepository.saveAll(featuredItemMapper.
+                    toFeaturedItemList(mapProdDtoToFeaturedItems(featuredItem.getProductList(), featuredItem.getFeatureListName())));
+            prodDtoList.addAll(mapFeaturedItemsToProdDtos(featuredItemMapper.toFeaturedItemDtos(featuredItemEntities)));
         }
-
         return prodDtoList;
     }
 
