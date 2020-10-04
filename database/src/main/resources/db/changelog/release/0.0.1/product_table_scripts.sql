@@ -38,6 +38,7 @@ $do$
 create table Product
 (
 	Prod_id	    BIGSERIAL,
+	App_id		bigint,
 	Prod_code	varchar(20),
 	Prod_Name	varchar(200),
 	Prod_Type	varchar(100),

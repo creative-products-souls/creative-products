@@ -28,9 +28,8 @@ public class ApplicationServiceImpl implements ApplicationService{
 
         ApplicationEntity appEntity = new ApplicationEntity();
 
-        if(Objects.isNull(applicationDto.getAppId()) && applicationDto.getAppId() != 0)
-            appEntity.setAppId(applicationDto.getAppId());
-
+        //if(Objects.isNull(applicationDto.getAppId()) && applicationDto.getAppId() != 0)
+        appEntity.setAppId(SequenceIdGenerator.getSequenceId());
         appEntity.setAppName(applicationDto.getAppName());
         appEntity.setAppType(applicationDto.getAppType() != null ? applicationDto.getAppType() : "");
         appEntity.setCreatedby(applicationDto.getUserName());

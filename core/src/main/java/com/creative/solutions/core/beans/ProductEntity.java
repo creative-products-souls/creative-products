@@ -13,6 +13,8 @@ public class ProductEntity extends AuditEntity implements Serializable {
     @Id
     @Column(name = "prod_id")
     private long prodId;
+    @Column(name = "app_id")
+    private long appId;
     @Column(name = "prod_code")
     private String prodCode;
     @Column(name = "prod_name")

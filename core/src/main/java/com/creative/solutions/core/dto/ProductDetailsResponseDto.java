@@ -7,9 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-public class ProductDetailsResponseDto implements Serializable {
+public class ProductDetailsResponseDto extends BaseResponseDto implements Serializable {
 
     public List<ProductDetailsDto> productList = Lists.newArrayList();
-    public String errorMessage;
-    public String errorCode;
 }

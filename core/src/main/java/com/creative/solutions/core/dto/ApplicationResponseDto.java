@@ -11,12 +11,9 @@ import lombok.Data;
 
 @Data
 @JsonInclude(Include.NON_EMPTY)
-public class ApplicationResponseDto {
+public class ApplicationResponseDto extends BaseResponseDto {
 	
 	public List<ApplicationEntity> applicationList = Lists.newArrayList();
 	public List<ApplicationDto> applicationDtoList = Lists.newArrayList();
     public String genericMessage;
-    public String errorMessage;
-    public String errorCode;
-
 }

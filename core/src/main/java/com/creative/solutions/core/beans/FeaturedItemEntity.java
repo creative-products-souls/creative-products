@@ -17,7 +17,7 @@ public class FeaturedItemEntity extends AuditEntity implements Serializable {
     @Column(name = "feature_id")
     private long featureId;
     @Column(name = "feature_name")
-    private long featureListName;
+    private String featureListName;
     @Column(name = "app_id")
     private long appId;
     @Column(name = "product_id")

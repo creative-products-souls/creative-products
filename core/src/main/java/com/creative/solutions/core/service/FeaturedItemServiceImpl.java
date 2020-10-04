@@ -1,21 +1,20 @@
 package com.creative.solutions.core.service;
 
 import com.creative.solutions.core.beans.FeaturedItemEntity;
-import com.creative.solutions.core.beans.ProductEntity;
 import com.creative.solutions.core.dto.FeaturedItemDto;
 import com.creative.solutions.core.dto.ProductDto;
 import com.creative.solutions.core.mapper.FeaturedItemMapper;
-import com.creative.solutions.core.mapper.ProductMapper;
 import com.creative.solutions.core.repository.FeaturedItemRepository;
-import com.creative.solutions.core.repository.ProductRepository;
 import com.creative.solutions.core.util.SequenceIdGenerator;
 import com.google.common.collect.Lists;
+import org.apache.commons.lang.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class FeaturedItemServiceImpl implements FeaturedItemService{
@@ -30,37 +29,37 @@ public class FeaturedItemServiceImpl implements FeaturedItemService{
     ProductService productService;
 
     @Override
-    public List<ProductDto> createFeaturedList(List<ProductDto> productDtos) {
+    public List<ProductDto> createFeaturedList(FeaturedItemDto featuredItem) {
         List<ProductDto> prodDtoList = Lists.newArrayList();
-        if(!CollectionUtils.isEmpty(productDtos)){
-            List<FeaturedItemEntity> featuredItemEntities =
-                    featuredItemRepository.saveAll(featuredItemMapper.toFeaturedItemList(mapProdDtoToFeaturedItems(productDtos)));
-            prodDtoList.addAll(mapFeaturedItemsToProdDtos(featuredItemMapper.toFeaturedItemDtos(featuredItemEntities)));
+        try {
+            if(featuredItem != null && !CollectionUtils.isEmpty(featuredItem.getProductList())){
+                Validate.notEmpty(featuredItem.getFeatureListName());
+                List<FeaturedItemEntity> featuredItemEntities = featuredItemRepository.saveAll(featuredItemMapper.
+                        toFeaturedItemList(mapProdDtoToFeaturedItems(featuredItem.getProductList(), featuredItem.getFeatureListName())));
+                prodDtoList.addAll(mapFeaturedItemsToProdDtos(featuredItemMapper.toFeaturedItemDtos(featuredItemEntities)));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
         return prodDtoList;
     }
 
-    private List<FeaturedItemDto> mapProdDtoToFeaturedItems(List<ProductDto> productDtos) {
+    private List<FeaturedItemDto> mapProdDtoToFeaturedItems(List<ProductDto> products, String listName) {
         List<FeaturedItemDto> featuredList = Lists.newArrayList();
-        for(ProductDto productDto : productDtos){
+        products.forEach(productDto -> {
             FeaturedItemDto featuredItemDto = new FeaturedItemDto();
             featuredItemDto.setFeatureId(SequenceIdGenerator.getSequenceId());
-            featuredItemDto.setFeatureListName(null);
-            featuredItemDto.setAppId(0);
+            featuredItemDto.setFeatureListName(listName);
+            featuredItemDto.setAppId(productDto.getAppId());
             featuredItemDto.setProductId(productDto.getProdId());
             featuredList.add(featuredItemDto);
-        }
+        });
         return featuredList;
     }
 
-    private List<ProductDto> mapFeaturedItemsToProdDtos(List<FeaturedItemDto> featuredItemDtos) {
-        List<ProductDto> prodDtoList = Lists.newArrayList();
-        for(FeaturedItemDto featuredItemDto : featuredItemDtos){
-            ProductDto productDto = productService.getProductById(featuredItemDto.getProductId());
-            if(productDto != null){
-                prodDtoList.add(productDto);
-            }
-        }
-        return prodDtoList;
+    private List<ProductDto> mapFeaturedItemsToProdDtos(List<FeaturedItemDto> featuredItems) {
+        return featuredItems.stream().map(featuredItemDto ->
+                productService.getProductById(featuredItemDto.getProductId())).filter(Objects::nonNull).collect(Collectors.toList());
     }
 }

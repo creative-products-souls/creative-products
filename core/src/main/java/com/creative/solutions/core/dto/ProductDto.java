@@ -10,6 +10,7 @@ import java.io.Serializable;
 public class ProductDto extends BaseProductAtrributeDto implements Serializable {
 
     private long prodId;
+    private long appId;
     private String prodCode;
     private String prodName;
     private String prodType;
