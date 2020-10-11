@@ -17,6 +17,7 @@ create table Product
 	Prod_code	varchar(20),
 	Prod_Name	varchar(200),
 	Prod_Type	varchar(100),
+	prod_category varchar(100),
 	Isactive	boolean,
 	CreatedBy	Varchar(50),
 	CreatedOn	date,

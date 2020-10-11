@@ -28,4 +28,6 @@ public class ProductEntity extends AuditEntity implements Serializable {
     private String prodImagePath;
     @Column(name = "prod_desc")
     private String prodDesc;
+    @Column(name = "prod_category")
+    private String prodCategory;
 }

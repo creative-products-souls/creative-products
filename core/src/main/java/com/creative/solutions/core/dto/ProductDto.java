@@ -14,6 +14,7 @@ public class ProductDto extends BaseProductAtrributeDto implements Serializable 
     private String prodCode;
     private String prodName;
     private String prodType;
+    private String prodCategory;
     private boolean isActive;
 
     private String prodImagePath;
