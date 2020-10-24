@@ -13,6 +13,8 @@ import java.sql.Date;
 @MappedSuperclass
 public class AuditEntity implements Serializable {
 
+    private static final long serialVersionUID = -8467838854415340543L;
+
     @Column(name = "createdby")
     public String createdby;
     @Column(name = "createdon")

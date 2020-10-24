@@ -28,6 +28,7 @@ create table Product
 create table Prod_Weight
 (
 	Weight_id	BIGSERIAL,
+	Prod_id	    BIGSERIAL,
 	weight		int,
 	Unit		varchar(10),
 	CreatedBy	Varchar(50),
@@ -39,6 +40,7 @@ create table Prod_Weight
 create table Prod_Color
 (
 	Color_id	BIGSERIAL,
+	Prod_id	    BIGSERIAL,
 	Color		varchar(15),
 	CreatedBy	Varchar(50),
 	CreatedOn	date,
@@ -49,6 +51,7 @@ create table Prod_Color
 create table Prod_Fragnance
 (
 	Fragnance_id	bigserial,
+	Prod_id	    BIGSERIAL,
 	Fragnance	varchar(15),
 	CreatedBy	Varchar(50),
 	CreatedOn	date,
@@ -59,6 +62,7 @@ create table Prod_Fragnance
 create table Prod_Size
 (
 	Size_id	        bigserial,
+	Prod_id	    BIGSERIAL,
 	Size		varchar(15),
 	CreatedBy	Varchar(50),
 	CreatedOn	date,
@@ -69,6 +73,7 @@ create table Prod_Size
 create table Prod_Image
 (
 	Image_id	bigserial,
+	Prod_id	    BIGSERIAL,
 	Image		BYTEA,
 	Clarity		varchar(15),
 	CreatedBy	Varchar(50),
@@ -80,6 +85,7 @@ create table Prod_Image
 create table Prod_Packaging
 (
 	Packaging_id		bigserial,
+	Prod_id	    BIGSERIAL,
 	Package_Type		varchar(15),
 	Package_size		varchar(15),
 	Package_Material	varchar(100),
@@ -92,6 +98,7 @@ create table Prod_Packaging
 create table Prod_Ingradient
 (
 	Ingradient_id	bigserial,
+	Prod_id	    BIGSERIAL,
 	Ingradient_Type	varchar(1000),
 	Material		varchar(100),
 	CreatedBy		Varchar(50),
@@ -103,6 +110,7 @@ create table Prod_Ingradient
 create table Prod_Purity
 (
 	Purity_id	bigserial,
+	Prod_id	    BIGSERIAL,
 	Purity		varchar(100),
 	CreatedBy	Varchar(50),
 	CreatedOn	date,
@@ -113,6 +121,7 @@ create table Prod_Purity
 create table Prod_Gender
 (
 	Gender_id	bigserial,
+	Prod_id	    BIGSERIAL,
 	Gender		varchar(10),
 	Age_Grp		varchar(20),
 	CreatedBy	Varchar(50),

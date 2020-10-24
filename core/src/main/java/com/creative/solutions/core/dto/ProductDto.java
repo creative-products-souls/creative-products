@@ -19,4 +19,14 @@ public class ProductDto extends BaseProductAtrributeDto implements Serializable 
 
     private String prodImagePath;
     private String prodDesc;
+
+    private ProdColorDto prodColor;
+    private ProdFragnanceDto prodFragrance;
+    private ProdGenderDto prodGender;
+    private ProdImageDto prodImage;
+    private ProdIngredientDto prodIngredient;
+    private ProdPackagingDto prodPackaging;
+    private ProdPurityDto prodPurity;
+    private ProdSizeDto prodSize;
+    private ProdWeightDto prodWeight;
 }
