@@ -3,10 +3,10 @@ package com.creative.solutions.ocean;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class OceanApplicationTests {
 
-	@Test
+	//@Test
 	void contextLoads() {
 	}
 
